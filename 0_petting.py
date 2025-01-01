@@ -26,19 +26,20 @@ def scratch(my_dog):
     my_dog.do_action('sit', speed=80)
     my_dog.wait_all_done()
 
-prev_touch_status = "N"
+x = True
+previous_state = x  # Track the initial state
 
 while True:
     touch_status = my_dog.dual_touch.read()
     print(f"touch_status: {touch_status}")
-    time.sleep(0.5)
-    
-    if touch_status != prev_touch_status:  # Detect a change in status
-        if touch_status != "N":
-            print("Scratchdog on touch detected!")
-            scratch(my_dog)  # Scratch when it first becomes not "N"
-        elif touch_status == "N":
-            print("Scratchdog on no touch detected!")
-            scratch(my_dog)  # Scratch when it becomes "N"
+    if touch_status == "N":
+        x = False
+    else:
+        x = True
+    if x != previous_state:  # Check if the state has changed
+        if not x:  # If x changes to False
+            scratch(my_dog)
+        previous_state = x
+      # Scratch when it becomes "N"
     
     prev_touch_status = touch_status  # Update the previous status

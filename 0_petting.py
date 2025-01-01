@@ -1,4 +1,4 @@
-from time import sleep
+import time
 import random
 from math import sin, cos, pi
 from pidog import Pidog

@@ -30,3 +30,5 @@ while True:
     touch_status = my_dog.dual_touch.read()
     print(f"touch_status: {touch_status}")
     time.sleep(0.5)
+    if touch_status != N:
+        scratch my_dog

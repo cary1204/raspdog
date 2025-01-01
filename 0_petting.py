@@ -31,4 +31,4 @@ while True:
     print(f"touch_status: {touch_status}")
     time.sleep(0.5)
     if touch_status != N:
-        scratch my_dog
+        scratch(my_dog)
